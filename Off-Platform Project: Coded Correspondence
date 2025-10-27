@@ -1,0 +1,91 @@
+import string
+string.ascii_lowercase
+
+the_message = ["xuo jxuhu! jxyi yi qd unqcfbu ev q squiqh syfxuh. muhu oek qrbu je tusetu yj? y xefu ie! iudt cu q cuiiqwu rqsa myjx jxu iqcu evviuj!"]
+offset = 10
+
+
+def caesar_decode(the_message, offset):
+  for i in the_message:
+    decoded_message = ""
+    for char in i:
+      if char in string.ascii_lowercase:
+        position = string.ascii_lowercase.index(char)
+        new_pos = (position + offset) % 26
+        new_let = string.ascii_lowercase[new_pos]
+        decoded_message += new_let
+      else:
+        decoded_message += char
+  print(decoded_message)
+
+caesar_decode(the_message, offset)
+
+
+my_message = ["This was very difficult, i don't know what else to type."]
+offset2 = 10
+
+def caesar_encode(my_message, offset2):
+  coded_message = ""
+  for i in my_message:
+    for char in i:
+      if char in string.ascii_lowercase:
+        position1 = string.ascii_lowercase.index(char)
+        new_pos1 = (position1 - offset2) % 26
+        new_let1 = string.ascii_lowercase[new_pos1]
+        coded_message += new_let1
+      else:
+        coded_message += char
+  print(coded_message)
+
+caesar_encode(my_message, offset2)
+
+the_message = ["jxu evviuj veh jxu iusedt cuiiqwu yi vekhjuud."]
+offset = 10
+caesar_decode(the_message, offset)
+
+the_message = ["bqdradyuzs ygxfubxq omqemd oubtqde fa oapq kagd yqeemsqe ue qhqz yadq eqogdq!"]
+offset = 14
+caesar_decode(the_message, offset)
+
+the_message = ["vhfinmxkl atox kxgwxkxw tee hy maxlx hew vbiaxkl hulhexmx. px'ee atox mh kxteer lmxi ni hnk ztfx by px ptgm mh dxxi hnk fxlltzxl ltyx."]
+offset = 7
+caesar_decode(the_message, offset)
+
+poly_message = ["txm srom vkda gl lzlgzr qpdb? fepb ejac! ubr imn tapludwy mhfbz cza ruxzal wg zztylktoikqq!"]
+keyword = "friends"
+
+def vigenere_decode(poly_message, keyword):
+  keyword_index = 0
+  decoded_message1 = ""
+  for char in poly_message[0]:
+      if char in string.ascii_lowercase:
+          key_char = keyword[keyword_index % len(keyword)]
+          position = string.ascii_lowercase.index(char)
+          key_index = string.ascii_lowercase.index(key_char)
+          new_pos = (position - key_index) % 26
+          new_let = string.ascii_lowercase[new_pos]
+          decoded_message1 += new_let
+          keyword_index += 1
+      else:
+          decoded_message1 += char
+  return decoded_message1
+vigenere_decode(poly_message, keyword)
+
+
+def vigenere_encode(poly_message, keyword):
+  keyword_index = 0
+  encoded_message1 = ""
+  for char in poly_message[0]:
+      if char in string.ascii_lowercase:
+          key_char = keyword[keyword_index % len(keyword)]
+          position = string.ascii_lowercase.index(char)
+          key_index = string.ascii_lowercase.index(key_char)
+          new_pos = (position + key_index) % 26
+          new_let = string.ascii_lowercase[new_pos]
+          encoded_message1 += new_let
+          keyword_index += 1
+      else:
+          encoded_message1 += char
+  return encoded_message1
+
+print(vigenere_encode(poly_message, keyword))
