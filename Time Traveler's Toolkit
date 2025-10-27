@@ -1,0 +1,34 @@
+custom_module.py
+def generate_time_travel_message(year, destination, cost):
+  return f"Pack your bags! You're traveling to {destination} in the year {year}. The cost of this trip will be ${cost}."
+
+
+
+
+from datetime import datetime as dt
+from decimal import Decimal 
+from random import randint 
+from random import choice 
+from custom_module import generate_time_travel_message
+
+now = dt.now()
+date = now.date()
+time = now.time()
+
+print(f"Today's date: {date} \nCurrent time: {time}")
+
+destinations = ["London", "Bristol", "Japan", "York", "Italy"]
+destination = choice(destinations)
+# Calculate the cost of time travel
+base_cost = Decimal('1000.00')
+current_year = date.year
+target_year = randint(2030, 2080)
+difference = abs(current_year - target_year)
+multiplier = Decimal(difference)
+
+yearly_cost = Decimal('2.50')  
+extra_cost = yearly_cost * multiplier
+final_cost = base_cost + extra_cost
+final_cost = (f"{final_cost:.2f}")
+
+print(generate_time_travel_message(target_year, destination, final_cost))
