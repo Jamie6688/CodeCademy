@@ -1,0 +1,71 @@
+import csv
+
+compromised_users = []
+with open('passwords.csv') as password_file:
+  password_csv = csv.DictReader(password_file)
+  for password_row in password_csv:
+    compromised_users.append(password_row['Username'])
+
+with open('compromised_users.txt', 'w') as compromised_user_file:
+  for names in compromised_users:
+    compromised_user_file.write(names + "\n")
+
+import json
+with open('boss_message.json', 'w') as boss_message:
+  boss_message_dict = {"recipient": "The Boss", "message": "Mission Success"}
+  json.dump(boss_message_dict, boss_message)
+
+with open('new_passwords.csv', 'w') as new_passwords_obj:
+  slash_null_sig = """ 
+ _  _     ___   __  ____             
+/ )( \   / __) /  \(_  _)            
+) \/ (  ( (_ \(  O ) )(              
+\____/   \___/ \__/ (__)             
+ _  _   __    ___  __ _  ____  ____  
+/ )( \ / _\  / __)(  / )(  __)(    \ 
+) __ (/    \( (__  )  (  ) _)  ) D ( 
+\_)(_/\_/\_/ \___)(__\_)(____)(____/ 
+        ____  __     __   ____  _  _ 
+ ___   / ___)(  )   / _\ / ___)/ )( \
+(___)  \___ \/ (_/\/    \\___ \) __ (
+       (____/\____/\_/\_/(____/\_)(_/
+ __ _  _  _  __    __                
+(  ( \/ )( \(  )  (  )               
+/    /) \/ (/ (_/\/ (_/\             
+\_)__)\____/\____/\____/
+"""
+  new_passwords_obj.write(slash_null_sig)
+
+
+
+boss_message.json
+{"recipient": "The Boss", "message": "Mission Success"}
+
+
+
+ai_project_review.json
+{"purpose":[{"description":"Great job! Your code successfully reads the compromised usernames from 'passwords.csv', writes them to 'compromised_users.txt', sends a JSON message to the boss, and writes the Slash Null signature to 'new_passwords.csv'. All major project tasks are completed.","old_code":"","new_code":""},{"description":"Consider removing the extra leading space in the multiline string for 'slash_null_sig' to match the signature formatting exactly as provided in the instructions.","old_code":"slash_null_sig = \"\"\" \n _  _     ___   __  ____             \n/ )( \\   / __) /  \\(_  _)            \n...","new_code":"slash_null_sig = \"\"\"\n _  _     ___   __  ____             \n/ )( \\   / __) /  \\(_  _)            \n..."},{"description":"You could add a check to ensure that the files are created and written successfully, which would make your script more robust.","old_code":"","new_code":"# After each with block, you could print a confirmation message (optional for user feedback)\nprint('compromised_users.txt created successfully!')"}],"readability":[{"description":"Your code is well-structured and uses clear variable names, making it easy to follow each step of the process.","old_code":"","new_code":""},{"description":"Consider adding brief comments before each major block to explain its purpose. This will help others (and your future self) quickly understand the workflow.","old_code":"import csv\n\ncompromised_users = []\nwith open('passwords.csv') as password_file:","new_code":"# Read compromised usernames from CSV\nimport csv\n\ncompromised_users = []\nwith open('passwords.csv') as password_file:"},{"description":"Remove any unnecessary blank lines at the start or end of your script to keep the code tidy.","old_code":"\nimport csv\n\ncompromised_users = []","new_code":"import csv\n\ncompromised_users = []"}],"performance":[{"description":"Efficient use of context managers (with statements) ensures files are properly handled and closed.","old_code":"","new_code":""},{"description":"You could use a list comprehension to build 'compromised_users' more concisely.","old_code":"compromised_users = []\nwith open('passwords.csv') as password_file:\n  password_csv = csv.DictReader(password_file)\n  for password_row in password_csv:\n    compromised_users.append(password_row['Username'])","new_code":"with open('passwords.csv') as password_file:\n  password_csv = csv.DictReader(password_file)\n  compromised_users = [row['Username'] for row in password_csv]"},{"description":"Consider handling potential file errors using try-except blocks for more robust error handling, especially when working with file I/O.","old_code":"with open('passwords.csv') as password_file:\n  password_csv = csv.DictReader(password_file)\n  ...","new_code":"try:\n  with open('passwords.csv') as password_file:\n    password_csv = csv.DictReader(password_file)\n    ...\nexcept FileNotFoundError:\n  print('passwords.csv not found!')"}]}
+
+
+passwords.csv
+Username,Password
+jean49,Da*E%OuGuc9$V1m
+haydenashley,l$r^9eGg8f@BZhy
+michaelastephens,$1sp++bga8H+eCr
+denisephillips,Vj)T7AsfRHkfpvw
+andrew24,T^mH8LMM&0C3VVk
+kaylaabbott,!nN05pv3tc(DBO(
+tmartinez,V46_Xx85_gKg7rt
+mholden,(sd44x3x*A7D1dA
+randygilbert,A7+E0YfB+MLPJ8Z
+watsonlouis,i!4(DEkBLNq)C7G
+mdavis,c$2VXHnxQ+6ifpx
+patrickprice,Es_r0GlF&zDkJKG
+kgriffith,%0dUpqgwFfA$Dma
+hannasarah,c(9au%x)tyC#HDd
+xaviermartin,e7!gWemxlde3K6p
+hrodriguez,od@9P!dfQj8NH&A
+erodriguez,hB+4A(si*vdHl4c
+danielleclark,2lv3HKAs+Or8R48
+timothy26,oz7ExOUI2&*S87h
+elizabeth19,x3C8yYtI!(e3+z(
